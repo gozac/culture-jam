@@ -14,6 +14,8 @@ public class SC_FPSController : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
 
+    public UnityEngine.AI.NavMeshAgent agent;
+
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
     float rotationX = 0;
@@ -53,6 +55,9 @@ public class SC_FPSController : MonoBehaviour
         	if (Input.GetKey(KeyCode.Z))
         		mouvement.y = 0;
         }
+
+        if (Input.GetKey(KeyCode.Space))
+        	agent.SetDestination(transform.position);
 
         float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * mouvement.y : 0;
         float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * mouvement.x : 0;
