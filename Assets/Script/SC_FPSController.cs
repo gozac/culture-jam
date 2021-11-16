@@ -56,7 +56,7 @@ public class SC_FPSController : MonoBehaviour
         		mouvement.y = 0;
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.F))
         	agent.SetDestination(transform.position);
 
         float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * mouvement.y : 0;
