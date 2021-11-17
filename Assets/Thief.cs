@@ -56,7 +56,8 @@ public class Thief : MonoBehaviour
     	Invoke("findtarget", 2);
     }
 
-    void getHit() {
+    void getHit(GameObject opponent) {
+    	transform.LookAt(opponent.transform);
     	animComponent.SetTrigger("die");
     	agent.isStopped = true;
     	Destroy(gameObject, 3);

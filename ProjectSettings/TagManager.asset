@@ -6,6 +6,7 @@ TagManager:
   tags:
   - art
   - exit
+  - foe
   layers:
   - Default
   - TransparentFX
