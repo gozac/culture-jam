@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - art
+  - exit
   layers:
   - Default
   - TransparentFX

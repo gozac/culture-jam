@@ -8,6 +8,8 @@ public class Thief : MonoBehaviour
 
 	public GameObject target;
 
+	public GameObject stolenObject;
+
 	float dist;
 
 	void findtarget()
@@ -31,12 +33,25 @@ public class Thief : MonoBehaviour
 		}
 		agent.SetDestination(target.transform.position);
 	}
+
+	void findexit() {
+		GameObject[] exits;
+		exits = GameObject.FindGameObjectsWithTag("exit");
+		int index = Random.Range (0, exits.Length);
+		target = exits[index];
+		agent.SetDestination(exits[index].transform.position);
+	}
+
+	void OnDestroy() {
+		if (stolenObject)
+			stolenObject.SetActive(true);
+	}
     // Start is called before the first frame update
     void Start()
     {
     	target = gameObject;
     	agent = gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-    	Invoke("findtarget", 5);
+    	Invoke("findtarget", 2);
     }
 
     // Update is called once per frame
@@ -48,9 +63,13 @@ public class Thief : MonoBehaviour
     		Debug.Log(target.transform.position);
         	agent.SetDestination(target.transform.position);
     	}
-    	dist = Vector3.Distance(target.transform.position, transform.position);
-    	Debug.Log(dist);
-    	if (target != gameObject && dist < 1)
+    	if (stolenObject == null && target != gameObject && Vector3.Distance(target.transform.position, transform.position) < 1){
+    		stolenObject = target;
     		target.SetActive(false);
+    		findexit();
+    	} else if (stolenObject != null && Vector3.Distance(target.transform.position, transform.position) < 1) {
+    		//leave
+    		gameObject.SetActive(false);
+    	}
     }
 }
