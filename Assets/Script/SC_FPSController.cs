@@ -15,6 +15,7 @@ public class SC_FPSController : MonoBehaviour
     public float lookXLimit = 45.0f;
 
     public UnityEngine.AI.NavMeshAgent agent;
+    public Transform attackpoint;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -30,6 +31,15 @@ public class SC_FPSController : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    private void Attack() {
+    	Collider[] hitColliders = Physics.OverlapSphere(attackpoint.position, 1,5);
+    	foreach (var hitCollider in hitColliders)
+        {
+        	if (hitCollider)
+            	hitCollider.SendMessage("getHit");
+        }
     }
 
     void Update()
@@ -56,8 +66,8 @@ public class SC_FPSController : MonoBehaviour
         		mouvement.y = 0;
         }
 
-        if (Input.GetKey(KeyCode.F))
-        	agent.SetDestination(transform.position);
+        if (Input.GetKeyDown(KeyCode.F))
+        	Attack();
 
         float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * mouvement.y : 0;
         float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * mouvement.x : 0;

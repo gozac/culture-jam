@@ -10,6 +10,8 @@ public class Thief : MonoBehaviour
 
 	public GameObject stolenObject;
 
+	public Animator animComponent;
+
 	float dist;
 
 	void findtarget()
@@ -54,15 +56,17 @@ public class Thief : MonoBehaviour
     	Invoke("findtarget", 2);
     }
 
+    void getHit() {
+    	animComponent.SetTrigger("die");
+    	agent.isStopped = true;
+    	Destroy(gameObject, 3);
+    }
+
     // Update is called once per frame
     void Update()
     {/*
     	if (target && !target.active)
     		findtarget();*/
-    	if (Input.GetKey(KeyCode.P)){
-    		Debug.Log(target.transform.position);
-        	agent.SetDestination(target.transform.position);
-    	}
     	if (stolenObject == null && target != gameObject && Vector3.Distance(target.transform.position, transform.position) < 1){
     		stolenObject = target;
     		target.SetActive(false);
