@@ -16,6 +16,7 @@ public class SC_FPSController : MonoBehaviour
 
     public UnityEngine.AI.NavMeshAgent agent;
     public Transform attackpoint;
+    public Animator charAnimator;
 
     CharacterController characterController;
     Vector3 moveDirection = Vector3.zero;
@@ -66,13 +67,19 @@ public class SC_FPSController : MonoBehaviour
         		mouvement.y = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)){
+        	charAnimator.SetTrigger("kick");
         	Attack();
+        }
 
         float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * mouvement.y : 0;
         float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * mouvement.x : 0;
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
+        if (moveDirection == Vector3.zero)
+        	charAnimator.SetBool("move", false);
+        else
+        	charAnimator.SetBool("move", true);
 
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
