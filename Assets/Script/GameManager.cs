@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
 	public GameState State;
 
+	public GameObject[] ArtObjects;
+
 	public static event Action<GameState> OnGameStateChanged;
 
 	void Awake(){
@@ -38,6 +40,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateGameState(GameState.Play);
+        ArtObjects = GameObject.FindGameObjectsWithTag("art");
     }
 
     // Update is called once per frame

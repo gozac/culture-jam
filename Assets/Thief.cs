@@ -21,11 +21,11 @@ public class Thief : MonoBehaviour
 		int index = Random.Range (0, targets.Length);
 		if (targets == null)
 				target = gameObject;
-		if (targets[index].active)
+		if (targets[index].activeSelf)
 			target = targets[index];
 		else {
 			foreach (GameObject cible in targets) {
-				if (cible.active) {
+				if (cible.activeSelf) {
 					target = cible;
 					break;
 				}
@@ -68,9 +68,10 @@ public class Thief : MonoBehaviour
     {/*
     	if (target && !target.active)
     		findtarget();*/
-    	if (stolenObject == null && target != gameObject && Vector3.Distance(target.transform.position, transform.position) < 1){
+    	if (stolenObject == null && target.activeSelf && target != gameObject && Vector3.Distance(target.transform.position, transform.position) < 1){
     		stolenObject = target;
     		target.SetActive(false);
+    		gameObject.transform.Find("Particle System").gameObject.SetActive(true);
     		findexit();
     	} else if (stolenObject != null && Vector3.Distance(target.transform.position, transform.position) < 1) {
     		//leave
