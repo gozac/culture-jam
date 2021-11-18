@@ -510,6 +510,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3853268898807207900, guid: a9370930ff8418e4e8ec892bb1ff65c6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b429282d26d63544d8689d0d86013210, type: 2}
+    - target: {fileID: 6148737315974723067, guid: a9370930ff8418e4e8ec892bb1ff65c6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bfcb5e0eba1eeb44bacb3f7d54332fb3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9370930ff8418e4e8ec892bb1ff65c6, type: 3}
 --- !u!1 &760252550
@@ -1486,6 +1496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: xbot@Mutant Run
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 05c8825c80faf734f9ecd11c1f15177b,
+        type: 3}
+      propertyPath: m_TagString
+      value: foe
       objectReference: {fileID: 0}
     - target: {fileID: 5465940246521907071, guid: 05c8825c80faf734f9ecd11c1f15177b,
         type: 3}
