@@ -7,6 +7,7 @@ TagManager:
   - art
   - exit
   - foe
+  - spawn
   layers:
   - Default
   - TransparentFX
