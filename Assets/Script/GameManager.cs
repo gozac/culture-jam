@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
 	public GameObject[] ArtObjects;
 
+	public List<GameObject> StolenObjects;
+
 	public static event Action<GameState> OnGameStateChanged;
 
 	void Awake(){
@@ -22,8 +24,23 @@ public class GameManager : MonoBehaviour
 		State = newstate;
 
 		switch (newstate) {
+			case GameState.MainMenu:
+				HandleMainMenu();
+				break;
+			case GameState.Bref:
+				HandleBref();
+				break;
 			case GameState.Play:
 				HandlePlay();
+				break;
+			case GameState.Pause:
+				HandlePause();
+				break;
+			case GameState.Win:
+				HandleWin();
+				break;
+			case GameState.Lose:
+				HandleLose();
 				break;
 			default:
 				throw new ArgumentOutOfRangeException(nameof(newstate), newstate, null);
@@ -32,21 +49,58 @@ public class GameManager : MonoBehaviour
 		OnGameStateChanged?.Invoke(newstate);
 	}
 
+	void HandleMainMenu(){
+		Debug.Log("Welcome");
+	}
+
+	void HandleBref(){
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		Time.timeScale = 0;
+		Debug.Log("Breafing");
+	}
+
 	void HandlePlay(){
-		
+		Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
+		Debug.Log("Your turn");
+	}
+
+	void HandlePause(){
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		Time.timeScale = 0;
+		Debug.Log("Stop");
+	}
+
+	void HandleWin(){
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		Time.timeScale = 0;
+		Debug.Log("Bien joué");
+	}
+
+	void HandleLose(){
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		Time.timeScale = 0;
+		Debug.Log("You lose");
 	}
 
     // Start is called before the first frame update
     void Start()
     {
-        UpdateGameState(GameState.Play);
+        UpdateGameState(GameState.Bref);
         ArtObjects = GameObject.FindGameObjectsWithTag("art");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (State == GameState.Play){
+
+        }
     }
 }
 
