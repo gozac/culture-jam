@@ -24,8 +24,20 @@ public class GameManager : MonoBehaviour
 		State = newstate;
 
 		switch (newstate) {
+			case GameState.MainMenu:
+				HandleMainMenu();
+				break;
+			case GameState.Bref:
+				HandleBref();
+				break;
 			case GameState.Play:
 				HandlePlay();
+				break;
+			case GameState.Pause:
+				HandlePause();
+				break;
+			case GameState.Win:
+				HandleWin();
 				break;
 			case GameState.Lose:
 				HandleLose();
@@ -37,11 +49,42 @@ public class GameManager : MonoBehaviour
 		OnGameStateChanged?.Invoke(newstate);
 	}
 
+	void HandleMainMenu(){
+		Debug.Log("Welcome");
+	}
+
+	void HandleBref(){
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		Time.timeScale = 0;
+		Debug.Log("Breafing");
+	}
+
 	void HandlePlay(){
+		Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
 		Debug.Log("Your turn");
 	}
 
+	void HandlePause(){
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		Time.timeScale = 0;
+		Debug.Log("Stop");
+	}
+
+	void HandleWin(){
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		Time.timeScale = 0;
+		Debug.Log("Bien joué");
+	}
+
 	void HandleLose(){
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		Time.timeScale = 0;
 		Debug.Log("You lose");
 	}
 

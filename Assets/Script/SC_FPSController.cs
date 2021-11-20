@@ -30,8 +30,7 @@ public class SC_FPSController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
     }
 
     private void Attack() {
@@ -72,7 +71,7 @@ public class SC_FPSController : MonoBehaviour
         	Attack();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && GameManager.Instance.State == GameState.Play){
         	GameManager.Instance.UpdateGameState(GameState.Pause);
         }
 
@@ -106,7 +105,7 @@ public class SC_FPSController : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
 
         // Player and Camera rotation
-        if (canMove)
+        if (GameManager.Instance.State == GameState.Play && canMove)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
             rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
