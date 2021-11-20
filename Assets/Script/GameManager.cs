@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
 	public List<GameObject> StolenObjects;
 
+	public List<GameObject> Thiefs = new List<GameObject>();
+
 	public static event Action<GameState> OnGameStateChanged;
 
 	void Awake(){

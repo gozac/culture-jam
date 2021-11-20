@@ -34,7 +34,7 @@ public class spawner : MonoBehaviour
         {
         	int index = Random.Range (0, spawns.Length);
             yield return new WaitForSeconds(delay);
-            Instantiate(thief, spawns[index].transform.position, Quaternion.identity);
+            GameManager.Instance.Thiefs.Add(Instantiate(thief, spawns[index].transform.position, Quaternion.identity));
             i++;
         }
     }
@@ -42,6 +42,7 @@ public class spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GameManager.Instance.State == GameState.Play && i == nbFoe && GameManager.Instance.Thiefs.Count == 0)
+            GameManager.Instance.UpdateGameState(GameState.Win); 
     }
 }
