@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
 
 	void Awake(){
 		Instance = this;
+
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 
 
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
 		Cursor.visible = true;
 		Time.timeScale = 0;
 		Debug.Log("Breafing");
+		Debug.Log(Cursor.visible);
 	}
 
 	void HandlePlay(){
@@ -95,14 +99,15 @@ public class GameManager : MonoBehaviour
     {
         UpdateGameState(GameState.Bref);
         ArtObjects = GameObject.FindGameObjectsWithTag("art");
+
+        Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (State == GameState.Play){
-
-        }
+    	Debug.Log(Cursor.visible);
     }
 }
 

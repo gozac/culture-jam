@@ -53,8 +53,14 @@ public class SC_FPSController : MonoBehaviour
         bool isRunning = Input.GetKey(KeyCode.LeftShift);
         if (Input.GetKey(KeyCode.Q))
         	mouvement.x = -1;
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Z)){
         	mouvement.y = 1;
+        	
+        	if (GameManager.Instance.State == GameState.Bref){
+        		Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
+        }
         if (Input.GetKey(KeyCode.D)){
         	mouvement.x = 1;
         	if (Input.GetKey(KeyCode.Q))
