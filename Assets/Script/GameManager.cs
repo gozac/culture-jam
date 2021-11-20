@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
 	public GameObject[] ArtObjects;
 
+	public List<GameObject> StolenObjects;
+
 	public static event Action<GameState> OnGameStateChanged;
 
 	void Awake(){
@@ -25,6 +27,9 @@ public class GameManager : MonoBehaviour
 			case GameState.Play:
 				HandlePlay();
 				break;
+			case GameState.Lose:
+				HandleLose();
+				break;
 			default:
 				throw new ArgumentOutOfRangeException(nameof(newstate), newstate, null);
 		}
@@ -33,20 +38,26 @@ public class GameManager : MonoBehaviour
 	}
 
 	void HandlePlay(){
-		
+		Debug.Log("Your turn");
+	}
+
+	void HandleLose(){
+		Debug.Log("You lose");
 	}
 
     // Start is called before the first frame update
     void Start()
     {
-        UpdateGameState(GameState.Play);
+        UpdateGameState(GameState.Bref);
         ArtObjects = GameObject.FindGameObjectsWithTag("art");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (State == GameState.Play){
+
+        }
     }
 }
 

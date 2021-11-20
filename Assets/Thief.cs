@@ -75,6 +75,10 @@ public class Thief : MonoBehaviour
     		findexit();
     	} else if (stolenObject != null && Vector3.Distance(target.transform.position, transform.position) < 1) {
     		//leave
+    		GameManager.Instance.StolenObjects.Add(stolenObject);
+    		if(GameManager.Instance.StolenObjects.Count == GameManager.Instance.ArtObjects.Length){
+    			GameManager.Instance.UpdateGameState(GameState.Lose);
+    		}
     		gameObject.SetActive(false);
     	}
     }

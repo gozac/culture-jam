@@ -72,6 +72,10 @@ public class SC_FPSController : MonoBehaviour
         	Attack();
         }
 
+        if (Input.GetKeyDown(KeyCode.Space)){
+        	GameManager.Instance.UpdateGameState(GameState.Pause);
+        }
+
         float curSpeedX = canMove ? (isRunning ? runningSpeed : walkingSpeed) * mouvement.y : 0;
         float curSpeedY = canMove ? (isRunning ? runningSpeed : walkingSpeed) * mouvement.x : 0;
         float movementDirectionY = moveDirection.y;
