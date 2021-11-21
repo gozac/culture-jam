@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/preambule.unity
+    guid: 94f0454d6d7166249a50d466901507db
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: b4398ca24adb1414ca1b68498624fb8b
+  - enabled: 1
+    path: Assets/Scenes/pre level musee.unity
+    guid: 79a01f5e986e88945ab50225f7070db5
+  - enabled: 1
+    path: Assets/Amion/Amion.unity
+    guid: 70a35184ec5e7c74990cfab7a153cd6a
+  - enabled: 1
+    path: Assets/Scenes/gallery.unity
+    guid: 0a8a095b2c143d747819c115755dfd25
   m_configObjects: {}

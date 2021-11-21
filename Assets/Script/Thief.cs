@@ -45,6 +45,7 @@ public class Thief : MonoBehaviour
 	}
 
 	void OnDestroy() {
+		GameManager.Instance.Thiefs.Remove(gameObject);
 		if (stolenObject)
 			stolenObject.SetActive(true);
 	}

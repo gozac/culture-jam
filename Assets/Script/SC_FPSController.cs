@@ -34,9 +34,11 @@ public class SC_FPSController : MonoBehaviour
     }
 
     private void Attack() {
-    	Collider[] hitColliders = Physics.OverlapSphere(attackpoint.position, 2.5f);
+    	Collider[] hitColliders = Physics.OverlapSphere(attackpoint.position, 4f, LayerMask.GetMask("foeLayer"));
+    	Debug.Log(LayerMask.NameToLayer("foeLayer"));
     	foreach (var hitCollider in hitColliders)
         {
+        	Debug.Log(hitCollider);
         	if (hitCollider.tag == "foe")
             	hitCollider.SendMessage("getHit", gameObject);
         }
@@ -84,7 +86,7 @@ public class SC_FPSController : MonoBehaviour
         else
         	charAnimator.SetBool("move", true);
 
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        if (Input.GetKeyDown(KeyCode.L) && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
         }
