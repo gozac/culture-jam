@@ -34,9 +34,11 @@ public class SC_FPSController : MonoBehaviour
     }
 
     private void Attack() {
-    	Collider[] hitColliders = Physics.OverlapSphere(attackpoint.position, 2.5f);
+    	Collider[] hitColliders = Physics.OverlapSphere(attackpoint.position, 4f, LayerMask.GetMask("foeLayer"));
+    	Debug.Log(LayerMask.NameToLayer("foeLayer"));
     	foreach (var hitCollider in hitColliders)
         {
+        	Debug.Log(hitCollider);
         	if (hitCollider.tag == "foe")
             	hitCollider.SendMessage("getHit", gameObject);
         }

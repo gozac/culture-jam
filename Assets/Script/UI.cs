@@ -58,6 +58,9 @@ public class UI : MonoBehaviour
 	    		if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 50, 200, 100), "Play")) {
 	    			GameManager.Instance.UpdateGameState(GameState.Play);
 	    		}
+	    		if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 50, 200, 100), "Menu")) {
+	    			SceneManager.LoadScene("Menu");
+	    		}
 	    		break;
 	    	case GameState.Win:
     			GUILayout.Box(win[iWin]);
