@@ -63,8 +63,16 @@ public class UI : MonoBehaviour
     			GUILayout.Box(win[iWin]);
     			if (GUI.Button(new Rect(Screen.width - 110, Screen.height - 60, 100, 50), next)) {
     				iWin++;
-    				if (iWin == win.Length)
-    					SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    				if (iWin == win.Length){
+    					if (SceneManager.sceneCountInBuildSettings - 1 > SceneManager.GetActiveScene().buildIndex){
+    						Debug.Log("Next Level");
+    						SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    					}
+    					else{
+    						Debug.Log("Menu");
+    						SceneManager.LoadScene("Menu");
+    					}
+    				}
     			}
     			break;
     		case GameState.Lose:

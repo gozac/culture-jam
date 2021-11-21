@@ -16,8 +16,8 @@ public class cameraLook : MonoBehaviour
 
 	void Start()
 	{
-		Cursor.lockState = CursorLockMode.Locked;
-		Cursor.visible = false;
+		//Cursor.lockState = CursorLockMode.Locked;
+		//Cursor.visible = false;
 	}
 
     void Update()
@@ -39,8 +39,8 @@ public class cameraLook : MonoBehaviour
 
 		if (Cursor.visible && Input.GetMouseButtonDown(1))
 		{
-			Cursor.lockState = CursorLockMode.Locked;
-			Cursor.visible = false;
+			//Cursor.lockState = CursorLockMode.Locked;
+			//Cursor.visible = false;
 		}
 	}
 }

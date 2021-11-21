@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: b4398ca24adb1414ca1b68498624fb8b
   - enabled: 1
+    path: Assets/Scenes/pre level musee.unity
+    guid: 79a01f5e986e88945ab50225f7070db5
+  - enabled: 1
     path: Assets/Isaac/isaac.unity
     guid: 158a61faf6ca66d4895f7c665654436c
   m_configObjects: {}
