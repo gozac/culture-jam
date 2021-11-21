@@ -41,6 +41,10 @@ public class mainmenu : MonoBehaviour
 		this.gameObject.SetActive(true);
 	}
 
+	public void Photo() {
+		SceneManager.LoadScene("gallery");
+	}
+
 
 	public void WebAccess() {
 		Application.OpenURL("https://www.webaccess.ci");
